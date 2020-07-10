@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> Register - Task Mate</title>
+{% endblock title %}
+
+{% block content %}
+    <div class ="container">
+    </br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>    
+            {% endfor %}
+        {% endif %}
+        <div class = "container w-50 card p-4 mt-4">
+            <form action = "" method ="POST" enctype= "multipart/form-data">
+            {% csrf_token %}
+                {{user_register|crispy}}
+                <input type="submit" value="Create" class="w-100 text-white text-center my-2 btn btn-info">
+            </form>
+        </div>
+{% endblock content %}
